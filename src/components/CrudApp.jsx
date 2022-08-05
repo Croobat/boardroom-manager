@@ -1,4 +1,5 @@
 import React from 'react'
+import CrudForm from './CrudForm'
 
 const testDb = [
   {
@@ -25,8 +26,9 @@ function CrudApp() {
   return (
     <>
       <h1>CRUD App</h1>
-      <form action=""></form>
+      <form></form>
       <table></table>
+      <CrudForm />
     </>
   )
 }

@@ -35,7 +35,18 @@ function App() {
     setDb(newData)
   }
 
-  const deleteData = (id) => {}
+  const deleteData = (id) => {
+    let isDelete = window.confirm(
+      `Confirmar eliminación de registro con id '${id}'.`
+    )
+
+    if (isDelete) {
+      let newData = db.filter((el) => el.id !== id)
+      setDb(newData)
+    } else {
+      return
+    }
+  }
 
   return (
     <>

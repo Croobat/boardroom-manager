@@ -1,6 +1,6 @@
 import React from 'react'
 
-function CrudTableRow({ el, setDataToEdit, deleteData }) {
+function TableRow({ el, setDataToEdit, deleteData }) {
   let { id, name, startDate, startTime, endTime } = el
   return (
     <tr>
@@ -16,4 +16,4 @@ function CrudTableRow({ el, setDataToEdit, deleteData }) {
   )
 }
 
-export default CrudTableRow
+export default TableRow

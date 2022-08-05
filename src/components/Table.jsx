@@ -1,7 +1,7 @@
 import React from 'react'
-import CrudTableRow from './CrudTableRow'
+import TableRow from './TableRow'
 
-function CrudTable({ data, setDataToEdit, deleteData }) {
+function Table({ data, setDataToEdit, deleteData }) {
   return (
     <div>
       <h2>Tabla de datos</h2>
@@ -22,7 +22,7 @@ function CrudTable({ data, setDataToEdit, deleteData }) {
             </tr>
           ) : (
             data.map((el) => (
-              <CrudTableRow
+              <TableRow
                 key={el.id}
                 el={el}
                 setDataToEdit={setDataToEdit}
@@ -36,4 +36,4 @@ function CrudTable({ data, setDataToEdit, deleteData }) {
   )
 }
 
-export default CrudTable
+export default Table

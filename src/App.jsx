@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import CrudForm from './components/CrudForm'
-import CrudTable from './components/CrudTable'
+import Form from './components/Form'
+import Table from './components/Table'
 
 const testDb = [
   {
@@ -56,14 +56,14 @@ function App() {
         </header>
         <body>
           <div className="formContainer">
-            <CrudForm
+            <Form
               createData={createData}
               updateData={updateData}
               dataToEdit={dataToEdit}
               setDataToEdit={setDataToEdit}
             />
           </div>
-          <CrudTable
+          <Table
             data={db}
             setDataToEdit={setDataToEdit}
             deleteData={deleteData}

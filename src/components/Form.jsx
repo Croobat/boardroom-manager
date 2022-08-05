@@ -8,7 +8,7 @@ const initialForm = {
   endTime: '',
 }
 
-function CrudForm({ createData, updateData, dataToEdit, setDataToEdit }) {
+function Form({ createData, updateData, dataToEdit, setDataToEdit }) {
   const [form, setForm] = useState({ initialForm })
 
   useEffect(() => {
@@ -93,4 +93,4 @@ function CrudForm({ createData, updateData, dataToEdit, setDataToEdit }) {
   )
 }
 
-export default CrudForm
+export default Form

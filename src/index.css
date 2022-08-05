@@ -28,6 +28,10 @@ body {
   padding: 10px;
 }
 
+input {
+  color: gray;
+}
+
 button, input[type=submit], input[type=reset] {
   display: inline-block;
   background: #000;
@@ -64,7 +68,6 @@ header {
 }
 
 .formContainer {
-  /* margin-top: 10px; */
   margin-bottom: 20px;
 }
 
@@ -95,4 +98,22 @@ th, td {
 
 div th {
   text-align: center;
+}
+
+@media only screen and (max-width: 675px) {
+  input[type=text], input[type=date], input[type=time] {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  form input[type=text] {
+    width: 100%;
+  }
+
+  table {
+    width: 98%;
+  }
+  button {
+    width: 100%;
+  }
 }

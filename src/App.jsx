@@ -6,16 +6,16 @@ const testDb = [
   {
     id: 1,
     name: 'Tony',
-    startDate: "2022-08-12",
-    startTime: "11:22",
-    endTime: "13:20"
+    startDate: '2022-08-12',
+    startTime: '11:22',
+    endTime: '13:20',
   },
   {
     id: 2,
     name: 'Abby',
-    startDate: "2022-08-07",
-    startTime: "10:25",
-    endTime: "12:22"
+    startDate: '2022-08-07',
+    startTime: '10:25',
+    endTime: '12:22',
   },
 ]
 
@@ -26,9 +26,9 @@ function App() {
 
   const createData = (data) => {
     // Uso la fecha como id único solo por simplicidad
-    data.id = Date.now();
-    setDb([...db, data]);
-   }
+    data.id = Date.now()
+    setDb([...db, data])
+  }
 
   const updateData = (data) => {}
 
@@ -43,7 +43,11 @@ function App() {
         dataToEdit={dataToEdit}
         setDataToEdit={setdataToEdit}
       />
-      <CrudTable data={db} setdataToEdit={setdataToEdit} deleteData={deleteData}/>
+      <CrudTable
+        data={db}
+        setdataToEdit={setdataToEdit}
+        deleteData={deleteData}
+      />
     </>
   )
 }

@@ -15,16 +15,16 @@ function CrudForm({ createData, updateData, dataToEdit, setDataToEdit }) {
     setForm({
       ...form,
       [e.target.name]: e.target.value,
-    });
-  };
+    })
+  }
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault()
 
     // Check empty fields
     if (!form.name || !form.startDate || !form.startTime || !form.endTime) {
-      alert("Datos incompletos");
-      return;
+      alert('Datos incompletos')
+      return
     }
 
     // Check older date
@@ -34,20 +34,20 @@ function CrudForm({ createData, updateData, dataToEdit, setDataToEdit }) {
     // Check occupied time
 
     // Check empty schedule
-    if(form.id === null) {
-      createData(form);
+    if (form.id === null) {
+      createData(form)
     } else {
-      updateData(form);
+      updateData(form)
     }
 
     // Reset form
-    handleReset();
-  };
+    handleReset()
+  }
 
   const handleReset = (e) => {
-    setForm(initialForm);
-    setDataToEdit(null);
-  };
+    setForm(initialForm)
+    setDataToEdit(null)
+  }
 
   return (
     <div>

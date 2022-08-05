@@ -32,7 +32,7 @@ function App() {
 
   const updateData = (data) => {
     let newData = db.map((el) => (el.id === data.id ? data : el))
-    setDb(newData);
+    setDb(newData)
   }
 
   const deleteData = (id) => {}

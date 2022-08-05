@@ -59,7 +59,7 @@ function CrudForm({ createData, updateData, dataToEdit, setDataToEdit }) {
 
   return (
     <div>
-      <h2>Agregar</h2>
+      <h2>{dataToEdit ? "Editar entrada" : "Agregar entrada"}</h2>
       <form onSubmit={handleSubmit}>
         <input
           type='text'

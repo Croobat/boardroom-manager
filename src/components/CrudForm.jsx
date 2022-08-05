@@ -7,15 +7,50 @@ const initialForm = {
   endTime: null,
 }
 
-function CrudForm() {
-  const [form, setform] = useState({ initialForm })
-  const handleChange = (e) => {}
-  const handleSubmit = (e) => {}
-  const handleReset = (e) => {}
+function CrudForm({ createData, updateData, dataToEdit, setDataToEdit }) {
+  const [form, setForm] = useState({ initialForm })
+
+  const handleChange = (e) => {
+    setForm({
+      ...form,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    // Check empty fields
+    if (!form.name || !form.startTime || !form.endTime) {
+      alert("Datos incompletos");
+      return;
+    }
+
+    // Check older date
+
+    // Check 2 hours range
+
+    // Check occupied time
+
+    // Check empty schedule
+    if(form.id === null) {
+      createData(form);
+    } else {
+      updateData(form);
+    }
+
+    // Reset form
+    handleReset();
+  };
+
+  const handleReset = (e) => {
+    setForm(initialForm);
+    setDataToEdit(null);
+  };
 
   return (
     <div>
-      <h3>Agregar</h3>
+      <h2>Agregar</h2>
       <form onSubmit={handleSubmit}>
         <input
           type='text'

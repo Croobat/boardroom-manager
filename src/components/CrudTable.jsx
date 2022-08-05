@@ -4,7 +4,7 @@ import CrudTableRow from './CrudTableRow'
 function CrudTable({ data }) {
   return (
     <div>
-      <h3>Tabla de datos</h3>
+      <h2>Tabla de datos</h2>
       <table>
         <thead>
           <tr>

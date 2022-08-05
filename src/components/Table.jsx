@@ -4,7 +4,7 @@ import TableRow from './TableRow'
 function Table({ data, setDataToEdit, deleteData }) {
   return (
     <div>
-      <h2>Tabla de datos</h2>
+      <h2 className='tableTitle'>Tabla de datos</h2>
       <table>
         <thead>
           <tr>

@@ -59,7 +59,7 @@ function Form({ createData, updateData, dataToEdit, setDataToEdit }) {
 
   return (
     <div>
-      <h2>{dataToEdit ? "Editar entrada" : "Agregar entrada"}</h2>
+      <h2 className='formTitle'>{dataToEdit ? "Editar entrada" : "Agregar entrada"}</h2>
       <form onSubmit={handleSubmit}>
         <input
           type='text'
@@ -86,8 +86,10 @@ function Form({ createData, updateData, dataToEdit, setDataToEdit }) {
           onChange={handleChange}
           value={form.endTime}
         />
-        <input type='submit' value='Enviar' />
-        <input type='reset' value='Limpiar' onClick={handleReset} />
+        <div className='buttons'>
+          <input type='submit' value='Enviar' />
+          <input type='reset' value='Limpiar' onClick={handleReset} />
+        </div>
       </form>
     </div>
   )

@@ -42,16 +42,57 @@ button, input[type=submit], input[type=reset] {
   font-family: inherit;
 }
 
+input[type=text], input[type=date], input[type=time] {
+  border: thin solid lightgray;
+  border-radius: 1rem;
+  padding: 0.25rem;
+  margin: 0 5px 10px 10px;
+  width: 18%;
+  background-color: transparent;
+}
+
+form input[type=text] {
+  width: 30%;
+  padding: 0.5rem;
+  margin-top: 10px;
+}
+
+
 header {
   text-align: center;
   background-color: pink;
 }
 
 .formContainer {
-  margin-top: 10px;
+  /* margin-top: 10px; */
   margin-bottom: 20px;
 }
 
 h2 {
-  margin: 10px auto;
+  padding: 5px 10px;
+}
+
+.formTitle {
+  background-color: lemonchiffon;
+}
+
+.tableTitle {
+  background-color: lightblue;
+}
+
+table {
+  margin: 0 auto;
+  border-spacing: 0;
+  border-collapse: collapse;
+  width: 90%;
+}
+
+th, td {
+  text-align: left;
+  padding: 0.5rem;
+  border-bottom: thin solid #dedede;
+}
+
+div th {
+  text-align: center;
 }

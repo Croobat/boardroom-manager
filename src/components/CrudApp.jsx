@@ -28,10 +28,14 @@ function CrudApp() {
 
   const [dataToEdit, setdataToEdit] = useState(null)
 
+<<<<<<< HEAD
   const createData = (data) => {
     console.log(data);
     // setDb([..db, data]);
   }
+=======
+  const createData = (data) => {}
+>>>>>>> 669f18d4b3397fc45b9e151aa4164f73686feb4e
 
   const updateData = (data) => {}
 

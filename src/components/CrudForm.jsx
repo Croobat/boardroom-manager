@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 const initialForm = {
   id: null,
   name: '',
+  startDate: '',
   startTime: '',
   endTime: '',
 }
@@ -21,7 +22,7 @@ function CrudForm({ createData, updateData, dataToEdit, setDataToEdit }) {
     e.preventDefault();
 
     // Check empty fields
-    if (!form.name || !form.startTime || !form.endTime) {
+    if (!form.name || !form.startDate || !form.startTime || !form.endTime) {
       alert("Datos incompletos");
       return;
     }
@@ -60,7 +61,13 @@ function CrudForm({ createData, updateData, dataToEdit, setDataToEdit }) {
           value={form.name}
         />
         <input
-          type='datetime-local'
+          type='date'
+          name='startDate'
+          onChange={handleChange}
+          value={form.startDate}
+        />
+        <input
+          type='time'
           name='startTime'
           onChange={handleChange}
           value={form.startTime}

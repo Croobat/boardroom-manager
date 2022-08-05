@@ -4,9 +4,12 @@ function CrudTableRow({ el }) {
   return (
     <tr>
       <td>{el.name}</td>
-      <td>{el.startTime.toDateString()}</td>
-      <td>{el.startTime.toTimeString().slice(0, 8)}</td>
-      <td>{el.endTime.toTimeString().slice(0, 8)}</td>
+      <td>{el.startDate}</td>
+      <td>{el.startTime}</td>
+      <td>{el.endTime}</td>
+      {/* <td>{el.startTime.toDateString()}</td> */}
+      {/* <td>{el.startTime.toTimeString().slice(0, 8)}</td> */}
+      {/* <td>{el.endTime.toTimeString().slice(0, 8)}</td> */}
       <td>
         <button>Editar</button>
         <button>Eliminar</button>

@@ -31,7 +31,7 @@ function CrudForm() {
           value={form.startTime}
         />
         <input
-          type='datetime-local'
+          type='time'
           name='endTime'
           onChange={handleChange}
           value={form.endTime}

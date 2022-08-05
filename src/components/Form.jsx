@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 
 const initialForm = {
-  id: null,
+  id: '',
   name: '',
   startDate: '',
   startTime: '',
@@ -30,14 +30,41 @@ function Form({ createData, updateData, dataToEdit, setDataToEdit }) {
     e.preventDefault()
 
     // Check empty fields
-    if (!form.name || !form.startDate || !form.startTime || !form.endTime) {
-      alert('Datos incompletos')
+    // if (!form.name || !form.startDate || !form.startTime || !form.endTime) {
+    //   alert('Datos incompletos')
+    //   return
+    // }
+
+    // Check older date
+    let today = new Date();
+    let inputDate = document.getElementById('inputDate').value;
+    let inputStartTime = document.getElementById('inputStartTime').value;
+    let inputStartHours = parseInt(inputStartTime.substring(0,2), 10)
+    let inputStartMins = parseInt(inputStartTime.substring(3,5), 10)
+
+    if (new Date(inputDate).getTime() + 86400000 < today.getTime()) {
+      alert('Introduzca fecha futura')
+      return
+    } else if (new Date(inputDate).getDay() + 1 == today.getDay()) {
+      if (inputStartHours * 60 + inputStartMins < today.getHours() * 60 + today.getMinutes()) {
+         alert('Introduzca hora futura')
+      }
       return
     }
 
-    // Check older date
-
     // Check 2 hours range
+    let inputEndTime = document.getElementById('inputEndTime').value;
+    let inputEndHours = parseInt(inputEndTime.substring(0,2), 10)
+    let inputEndMins = parseInt(inputEndTime.substring(3,5), 10)
+    let maxTimeRange = 2 * 60 //Maximum time range in minutes
+    let timeDiff = (inputEndHours * 60 + inputEndMins) - (inputStartHours * 60 + inputStartMins)
+
+    console.log(timeDiff)
+
+    if (timeDiff > maxTimeRange) {
+      alert(`No se permiten reuniones mayores a ${maxTimeRange / 60} horas`)
+      return
+    }
 
     // Check occupied time
 
@@ -73,18 +100,21 @@ function Form({ createData, updateData, dataToEdit, setDataToEdit }) {
           name='startDate'
           onChange={handleChange}
           value={form.startDate}
+          id='inputDate'
         />
         <input
           type='time'
           name='startTime'
           onChange={handleChange}
           value={form.startTime}
+          id='inputStartTime'
         />
         <input
           type='time'
           name='endTime'
           onChange={handleChange}
           value={form.endTime}
+          id='inputEndTime'
         />
         <div className='buttons'>
           <input type='submit' value='Enviar' />

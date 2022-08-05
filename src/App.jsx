@@ -54,7 +54,7 @@ function App() {
         <header>
           <h1>Meeting room manager</h1>
         </header>
-        <body>
+        <div className='body'>
           <div className="formContainer">
             <Form
               createData={createData}
@@ -68,7 +68,7 @@ function App() {
             setDataToEdit={setDataToEdit}
             deleteData={deleteData}
           />
-        </body>
+        </div>
       </div>
     </>
   )

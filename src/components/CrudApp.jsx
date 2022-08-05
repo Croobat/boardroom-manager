@@ -26,9 +26,9 @@ function CrudApp() {
   return (
     <>
       <h1>CRUD App</h1>
+      <CrudForm />
       <form></form>
       <table></table>
-      <CrudForm />
     </>
   )
 }

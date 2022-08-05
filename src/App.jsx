@@ -50,18 +50,26 @@ function App() {
 
   return (
     <>
-      <h1>Meeting room manager</h1>
-      <CrudForm
-        createData={createData}
-        updateData={updateData}
-        dataToEdit={dataToEdit}
-        setDataToEdit={setDataToEdit}
-      />
-      <CrudTable
-        data={db}
-        setDataToEdit={setDataToEdit}
-        deleteData={deleteData}
-      />
+      <div className="container">
+        <header>
+          <h1>Meeting room manager</h1>
+        </header>
+        <body>
+          <div className="formContainer">
+            <CrudForm
+              createData={createData}
+              updateData={updateData}
+              dataToEdit={dataToEdit}
+              setDataToEdit={setDataToEdit}
+            />
+          </div>
+          <CrudTable
+            data={db}
+            setDataToEdit={setDataToEdit}
+            deleteData={deleteData}
+          />
+        </body>
+      </div>
     </>
   )
 }

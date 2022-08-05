@@ -1,18 +1,16 @@
 import React from 'react'
 
-function CrudTableRow({ el }) {
+function CrudTableRow({ el, setDataToEdit, deleteData }) {
+  let { id, name, startDate, startTime, endTime } = el
   return (
     <tr>
       <td>{el.name}</td>
       <td>{el.startDate}</td>
       <td>{el.startTime}</td>
       <td>{el.endTime}</td>
-      {/* <td>{el.startTime.toDateString()}</td> */}
-      {/* <td>{el.startTime.toTimeString().slice(0, 8)}</td> */}
-      {/* <td>{el.endTime.toTimeString().slice(0, 8)}</td> */}
       <td>
-        <button>Editar</button>
-        <button>Eliminar</button>
+        <button onClick={() => setDataToEdit(el)}> Editar </button>
+        <button onClick={() => deleteData(id)}> Eliminar </button>
       </td>
     </tr>
   )

@@ -22,7 +22,7 @@ const testDb = [
 function App() {
   const [db, setDb] = useState(testDb)
 
-  const [dataToEdit, setdataToEdit] = useState(null)
+  const [dataToEdit, setDataToEdit] = useState(null)
 
   const createData = (data) => {
     // Uso la fecha como id único solo por simplicidad
@@ -30,7 +30,10 @@ function App() {
     setDb([...db, data])
   }
 
-  const updateData = (data) => {}
+  const updateData = (data) => {
+    let newData = db.map((el) => (el.id === data.id ? data : el))
+    setDb(newData);
+  }
 
   const deleteData = (id) => {}
 
@@ -41,11 +44,11 @@ function App() {
         createData={createData}
         updateData={updateData}
         dataToEdit={dataToEdit}
-        setDataToEdit={setdataToEdit}
+        setDataToEdit={setDataToEdit}
       />
       <CrudTable
         data={db}
-        setdataToEdit={setdataToEdit}
+        setDataToEdit={setDataToEdit}
         deleteData={deleteData}
       />
     </>

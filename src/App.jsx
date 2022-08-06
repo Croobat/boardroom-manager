@@ -28,7 +28,15 @@ function App() {
     return fdata
   }
 
-  const createData = (data) => {
+  const createData = async (data) => {
+    const res = await fetch('http://localhost:5000/meetings', {
+      method: 'POST',
+      headers: {
+      'Content-type': 'application/json'
+    },
+      body: JSON.stringify(data)
+    })
+
     // Uso la fecha como id único solo por simplicidad
     data.id = Date.now()
     setDb([...db, data])
@@ -39,10 +47,14 @@ function App() {
     setDb(newData)
   }
 
-  const deleteData = (id) => {
+  const deleteData = async (id) => {
     let isDelete = window.confirm(
       `Confirmar eliminación de registro con id '${id}'.`
     )
+
+    await fetch(`http://localhost:5000/meetings/${id}`, {
+      method: 'DELETE'
+    })
 
     if (isDelete) {
       let newData = db.filter((el) => el.id !== id)

@@ -1,0 +1,18 @@
+{
+  "meetings": [
+    {
+      "id": 1,
+      "name": "Tony",
+      "startDate": "2022-08-12",
+      "startTime": "11:22",
+      "endTime": "13:20"
+    },
+    {
+      "id": 2,
+      "name": "Abby",
+      "startDate": "2022-08-07",
+      "startTime": "10:25",
+      "endTime": "12:22"
+    }
+  ]
+}

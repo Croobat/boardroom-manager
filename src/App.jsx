@@ -1,30 +1,32 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Form from './components/Form'
 import Table from './components/Table'
 // import Moment from 'moment'
 // import { extendedMoment } from 'moment-range'
 
-const testDb = [
-  {
-    id: 1,
-    name: 'Tony',
-    startDate: '2022-08-12',
-    startTime: '11:22',
-    endTime: '13:20',
-  },
-  {
-    id: 2,
-    name: 'Abby',
-    startDate: '2022-08-07',
-    startTime: '10:25',
-    endTime: '12:22',
-  },
-]
+const testDb = []
 
 function App() {
   const [db, setDb] = useState(testDb)
 
   const [dataToEdit, setDataToEdit] = useState(null)
+
+  useEffect(() => {
+    const getMeetings = async () => {
+      const meetingsFromServer = await fetchMeetings()
+      setDb(meetingsFromServer)
+    }
+
+    getMeetings()
+  }, [])
+
+  // Fetch meetings
+  const fetchMeetings = async () => {
+    const fres = await fetch('http://localhost:5000/meetings')
+    const fdata = await fres.json()
+
+    return fdata
+  }
 
   const createData = (data) => {
     // Uso la fecha como id único solo por simplicidad
@@ -54,7 +56,6 @@ function App() {
     db.forEach(appointment => {
       if (data.startDate == appointment.startDate) {
         if ((data.startTime <= appointment.endTime) && (data.endTime >= appointment.startTime)) {
-          // console.log('overlap')
           alert('Horario ocupado')
           let newData = db.filter((el) => el.id !== id)
           setDb(newData)

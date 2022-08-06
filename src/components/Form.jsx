@@ -42,9 +42,9 @@ function Form({ createData, updateData, dataToEdit, setDataToEdit, checkOverlap 
     let inputStartHours = parseInt(inputStartTime.substring(0,2), 10)
     let inputStartMins = parseInt(inputStartTime.substring(3,5), 10)
 
-    console.log([new Date(inputDate).getTime() + 94400000, today.getTime()])
+    console.log([new Date(inputDate).getTime() + 95400000, today.getTime()])
 
-    if (new Date(inputDate).getTime() + 94400000 < today.getTime()) {
+    if (new Date(inputDate).getTime() + 95400000 < today.getTime()) {
       alert('Introduzca fecha futura')
       return
     } else if (new Date(inputDate).getDay() + 1 == today.getDay()) {

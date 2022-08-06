@@ -1,14 +1,14 @@
 import { useState, useEffect } from 'react'
 
 const initialForm = {
-  id: '',
+  id: null,
   name: '',
   startDate: '',
   startTime: '',
   endTime: '',
 }
 
-function Form({ createData, updateData, dataToEdit, setDataToEdit }) {
+function Form({ createData, updateData, dataToEdit, setDataToEdit, checkOverlap }) {
   const [form, setForm] = useState({ initialForm })
 
   useEffect(() => {
@@ -30,10 +30,10 @@ function Form({ createData, updateData, dataToEdit, setDataToEdit }) {
     e.preventDefault()
 
     // Check empty fields
-    // if (!form.name || !form.startDate || !form.startTime || !form.endTime) {
-    //   alert('Datos incompletos')
-    //   return
-    // }
+    if (!form.name || !form.startDate || !form.startTime || !form.endTime) {
+      alert('Datos incompletos')
+      return
+    }
 
     // Check older date
     let today = new Date();
@@ -42,14 +42,16 @@ function Form({ createData, updateData, dataToEdit, setDataToEdit }) {
     let inputStartHours = parseInt(inputStartTime.substring(0,2), 10)
     let inputStartMins = parseInt(inputStartTime.substring(3,5), 10)
 
-    if (new Date(inputDate).getTime() + 86400000 < today.getTime()) {
+    console.log([new Date(inputDate).getTime() + 94400000, today.getTime()])
+
+    if (new Date(inputDate).getTime() + 94400000 < today.getTime()) {
       alert('Introduzca fecha futura')
       return
     } else if (new Date(inputDate).getDay() + 1 == today.getDay()) {
       if (inputStartHours * 60 + inputStartMins < today.getHours() * 60 + today.getMinutes()) {
          alert('Introduzca hora futura')
+         return
       }
-      return
     }
 
     // Check 2 hours range
@@ -57,16 +59,12 @@ function Form({ createData, updateData, dataToEdit, setDataToEdit }) {
     let inputEndHours = parseInt(inputEndTime.substring(0,2), 10)
     let inputEndMins = parseInt(inputEndTime.substring(3,5), 10)
     let maxTimeRange = 2 * 60 //Maximum time range in minutes
-    let timeDiff = (inputEndHours * 60 + inputEndMins) - (inputStartHours * 60 + inputStartMins)
-
-    console.log(timeDiff)
+    let timeDiff = Math.abs((inputEndHours * 60 + inputEndMins) - (inputStartHours * 60 + inputStartMins))
 
     if (timeDiff > maxTimeRange) {
       alert(`No se permiten reuniones mayores a ${maxTimeRange / 60} horas`)
       return
     }
-
-    // Check occupied time
 
     // Check empty schedule
     if (form.id === null) {
@@ -74,6 +72,9 @@ function Form({ createData, updateData, dataToEdit, setDataToEdit }) {
     } else {
       updateData(form)
     }
+
+    // Confirm overlaps
+    checkOverlap(form)
 
     // Reset form
     handleReset()

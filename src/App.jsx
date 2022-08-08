@@ -47,16 +47,19 @@ function App() {
     setDb(newData)
   }
 
-  const deleteData = async (id) => {
-    let isDelete = window.confirm(
-      `Confirmar eliminación de registro con id '${id}'.`
-    )
+  const deleteData = async (id, isEdit = false) => {
+    let isDelete = true
+    if (!isEdit) {
+      isDelete = window.confirm(
+        `Confirmar eliminación de registro con id '${id}'.`
+      )
+    }
 
     await fetch(`http://localhost:5000/meetings/${id}`, {
       method: 'DELETE'
     })
 
-    if (isDelete) {
+    if (isDelete || isEdit) {
       let newData = db.filter((el) => el.id !== id)
       setDb(newData)
     } else {

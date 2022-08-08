@@ -14,6 +14,7 @@ function Form({ createData, updateData, dataToEdit, setDataToEdit, checkOverlap 
   useEffect(() => {
     if (dataToEdit) {
       setForm(dataToEdit);
+
     } else {
       setForm(initialForm);
     }

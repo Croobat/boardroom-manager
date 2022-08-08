@@ -80,6 +80,40 @@ function App() {
     return
   }
 
+  const checkOld = () => {
+    db.forEach(appointment => {
+      // Check older date
+      let today = new Date();
+      let appDate = appointment.startDate;
+      let appEndTime = appointment.endTime;
+      let appEndHours = parseInt(appEndTime.substring(0,2), 10)
+      let appEndMins = parseInt(appEndTime.substring(3,5), 10)
+
+      console.log(appDate, today.toISOString().slice(0,10))
+      console.log(appEndHours * 60 + appEndMins, today.getHours() * 60 + today.getMinutes())
+
+      if (new Date(appDate).getTime() + 95400000 < today.getTime()) {
+        deleteData(appointment.id, true)
+        // console.log(`id ${appointment.id} old date`)
+        return
+      } else if ((appDate == today.toISOString().slice(0,10)) && (appEndHours * 60 + appEndMins < today.getHours() * 60 + today.getMinutes())) {
+        deleteData(appointment.id, true)
+        // console.log(`id ${appointment.id} old time`)
+      }
+    })
+  }
+
+  const MINUTE_MS = 60000
+  useEffect(() => {
+    const interval = setInterval(() => {
+      checkOld()
+    }, MINUTE_MS);
+
+    return () => clearInterval(interval);
+  }, [])
+
+  checkOld()
+
   return (
     <>
       <div className="container">

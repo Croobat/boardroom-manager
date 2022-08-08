@@ -14,7 +14,6 @@ function Form({ createData, updateData, dataToEdit, setDataToEdit, checkOverlap 
   useEffect(() => {
     if (dataToEdit) {
       setForm(dataToEdit);
-
     } else {
       setForm(initialForm);
     }
@@ -46,7 +45,7 @@ function Form({ createData, updateData, dataToEdit, setDataToEdit, checkOverlap 
     if (new Date(inputDate).getTime() + 95400000 < today.getTime()) {
       alert('Introduzca fecha futura')
       return
-    } else if (new Date(inputDate).getDay() + 1 == today.getDay()) {
+    } else if (inputDate == today.toISOString().slice(0,10)) {
       if (inputStartHours * 60 + inputStartMins < today.getHours() * 60 + today.getMinutes()) {
          alert('Introduzca hora futura')
          return

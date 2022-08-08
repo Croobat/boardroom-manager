@@ -1,20 +1,6 @@
 {
   "meetings": [
     {
-      "id": 1,
-      "name": "Miriam",
-      "startDate": "2022-08-08",
-      "startTime": "22:56",
-      "endTime": "23:56"
-    },
-    {
-      "id": 3,
-      "name": "Miriam",
-      "startDate": "2022-08-08",
-      "startTime": "22:56",
-      "endTime": "23:56"
-    },
-    {
       "id": 2,
       "name": "Miriam",
       "startDate": "2022-08-08",

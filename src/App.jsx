@@ -69,11 +69,13 @@ function App() {
 
   const checkOverlap = (data, id) => {
     db.forEach(appointment => {
-      if (data.startDate == appointment.startDate) {
-        if ((data.startTime <= appointment.endTime) && (data.endTime >= appointment.startTime)) {
-          alert('Horario ocupado')
-          let newData = db.filter((el) => el.id !== id)
-          setDb(newData)
+      if (data.id != appointment.id) {
+        if (data.startDate == appointment.startDate) {
+          if ((data.startTime <= appointment.endTime) && (data.endTime >= appointment.startTime)) {
+            alert('Horario ocupado')
+            let newData = db.filter((el) => el.id !== id)
+            setDb(newData)
+          }
         }
       }
     })
@@ -89,16 +91,11 @@ function App() {
       let appEndHours = parseInt(appEndTime.substring(0,2), 10)
       let appEndMins = parseInt(appEndTime.substring(3,5), 10)
 
-      console.log(appDate, today.toISOString().slice(0,10))
-      console.log(appEndHours * 60 + appEndMins, today.getHours() * 60 + today.getMinutes())
-
       if (new Date(appDate).getTime() + 95400000 < today.getTime()) {
         deleteData(appointment.id, true)
-        // console.log(`id ${appointment.id} old date`)
         return
       } else if ((appDate == today.toISOString().slice(0,10)) && (appEndHours * 60 + appEndMins < today.getHours() * 60 + today.getMinutes())) {
         deleteData(appointment.id, true)
-        // console.log(`id ${appointment.id} old time`)
       }
     })
   }
